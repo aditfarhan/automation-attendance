@@ -82,14 +82,14 @@ func run(ctx context.Context) error {
 		return nil
 	}
 
-	lastTimeOff, err := time.Parse("2006-01-02", lastTimeOffText)
-	if err != nil {
-		return fmt.Errorf("parse last time off date: %w", err)
-	}
-	if lastTimeOff.Format("2006-01-02") == time.Now().Format("2006-01-02") {
-		log.Printf("today is time off, skipping clock in/out")
-		return nil
-	}
+	// lastTimeOff, err := time.Parse("2006-01-02", lastTimeOffText)
+	// if err != nil {
+	// 	return fmt.Errorf("parse last time off date: %w", err)
+	// }
+	// if lastTimeOff.Format("2006-01-02") == time.Now().Format("2006-01-02") {
+	// 	log.Printf("today is time off, skipping clock in/out")
+	// 	return nil
+	// }
 
 	if err := chromedp.Run(taskCtx, finalAction); err != nil {
 		return fmt.Errorf("clock in/out: %w", err)
